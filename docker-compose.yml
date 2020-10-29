@@ -1,0 +1,49 @@
+version: '3.2'
+
+services:
+  api:
+    build:
+      context: api
+    image: wordprice_api
+    volumes:
+      - ./api:/app
+    ports:
+      - 8000:80
+    networks:
+      - wordprice
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - ./.env
+
+  frontend:
+    build:
+      context: frontend
+    image: wordprice_frontend
+    ports:
+      - 80:80
+    depends_on:
+      - api
+    env_file:
+      - ./.env
+
+  postgres:
+    image: postgres
+    volumes:
+      - /var/lib/postgresql/data
+      - /backups
+    env_file:
+      - ./.env
+    ports:
+      - 5432:5432
+    networks:
+      - wordprice
+
+  redis:
+    image: redis
+
+
+networks:
+  wordprice:
+    driver: bridge
