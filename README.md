@@ -1,2 +1,2 @@
 # WordPrice
-messanger with paid messages
+messenger with messages fees
