@@ -4,7 +4,7 @@ from fastapi import APIRouter
 app_v1 = APIRouter()
 
 @app_v1.post('/user')
-async def post_user():
+async def create_user():
     pass
 
 @app_v1.get('/user/{id}')
@@ -12,7 +12,7 @@ async def get_user():
     pass
 
 @app_v1.patch('/user/{id}')
-async def patch_user():
+async def update_user():
     pass
 
 @app_v1.post('/message')
@@ -32,9 +32,9 @@ async def post_like():
     pass
 
 @app_v1.get('/message/{id}/like')
-async def get_like():
+async def check_like():
     pass
 
-@app_v1.patch('/message/{id}/like')
-async def patch_like():
+@app_v1.delete('/message/{id}/like')
+async def delete_like():
     pass
