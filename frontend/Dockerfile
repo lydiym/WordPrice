@@ -2,9 +2,9 @@ FROM node:14
 
 COPY ./package.json /app/
 WORKDIR /app
-RUN yarn global add @vue/cli @vue/cli-service
-RUN yarn install
+RUN npm install --global @vue/cli @vue/cli-service
+RUN npm install
 
 COPY . /app
 
-ENTRYPOINT yarn serve
+ENTRYPOINT npm run serve
